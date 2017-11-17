@@ -9,7 +9,7 @@ server.connection({
 server.register([require('inert'), require('hapi-error')], function() {
   server.route([
     { method: 'GET', path: '/', handler: { file: 'index.html' } },
-
+    { method: 'GET', path: '/style.css', handler: { file: './style.css' } },
     { method: 'GET', path: '/client.js', handler: { file: './lib/client.js' } },
     { method: 'GET', path: '/favicon.ico', handler: { file: './vendor/favicon.ico' } },
     { method: 'GET', path: '/cookies.min.js', handler: { file: './vendor/cookies.min.js' } },
