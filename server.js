@@ -9,9 +9,12 @@ server.connection({
 server.register([require('inert'), require('hapi-error')], function() {
   server.route([
     { method: 'GET', path: '/', handler: { file: 'index.html' } },
-    // switch these two routes for a /static handler?
+
     { method: 'GET', path: '/client.js', handler: { file: './lib/client.js' } },
-    { method: 'GET', path: '/style.css', handler: { file: './style.css' } },
+    { method: 'GET', path: '/favicon.ico', handler: { file: './vendor/favicon.ico' } },
+    { method: 'GET', path: '/cookies.min.js', handler: { file: './vendor/cookies.min.js' } },
+    { method: 'GET', path: '/jquery-1.11.3.js', handler: { file: './vendor/jquery-1.11.3.js' } },
+    { method: 'GET', path: '/socket.io-1.3.5.js', handler: { file: './vendor/socket.io-1.3.5.js' } },
     {
       method: 'GET',
       path: '/load',
