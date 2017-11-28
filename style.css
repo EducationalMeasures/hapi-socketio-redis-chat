@@ -86,6 +86,7 @@ form {
   position: fixed;
   overflow: scroll;
   width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
   #messages li { padding: 5px 10px; }
