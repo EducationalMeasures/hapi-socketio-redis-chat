@@ -84,7 +84,9 @@ form {
   max-height: 88%;
   padding: 0;
   position: fixed;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-overflow: ellipsis;
   width: 100%;
   -webkit-overflow-scrolling: touch;
 }
