@@ -48,7 +48,7 @@ server.register([require('inert'), require('hapi-error')], function() {
       // console.log('REDISCLOUD_URL:', process.env.REDISCLOUD_URL);
       console.log(
         'Feeling Chatty?',
-        'listening on: http://127.0.0.1:' + process.env.PORT
+        'listening on: http://0.0.0.0:' + process.env.PORT
       );
     });
   });
