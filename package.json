@@ -49,7 +49,7 @@
   "scripts": {
     "docs": "./node_modules/jsdoc/jsdoc.js ./lib/*.js",
     "quick": "PORT=8000 ./node_modules/tape/bin/tape ./test/*.js",
-    "test": "PORT=8000 ./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js",
+    "test": "",
     "coverage": "PORT=8000 ./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js && ./node_modules/.bin/istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
     "lint": "node_modules/.bin/goodparts lib",
     "fix": "node_modules/.bin/goodparts lib --fix",
@@ -61,12 +61,9 @@
     "local": "PORT=8000 ./node_modules/.bin/nodemon ./server.js",
     "start": "node ./server.js",
     "local-elm": "elm-make ./elm/src/Main.elm --output=./elm/js/app.js && PORT=8000 ./node_modules/.bin/nodemon ./server.js",
-    "test-elm": "elm-test"
+    "test-elm": "elm-test",
+    "start-docker": "node ./server.js"
   },
-  "pre-commit": [
-    "lint",
-    "coverage"
-  ],
   "engines": {
     "node": ">=6.9.1"
   }

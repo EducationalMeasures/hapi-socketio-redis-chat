@@ -1,0 +1,37 @@
+version: "3"
+services:
+  chat_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7070:8080"
+    environment:
+      - REDIS_URL=redis://:foobar@redis:6379
+      - REDISCLOUD_URL=redis://:foobar@redis:6379
+    command: npm run start-docker
+    networks:
+      - emdev_net
+    depends_on:
+      - redis
+  redis:
+    image: redis:5
+    ports:
+      - "6380:6379"
+    restart: always
+    networks:
+      - emdev_net
+  redis_commander:
+    image: rediscommander/redis-commander
+    environment:
+      - REDIS_HOSTS=chat:redis:6379:0
+    ports:
+      - "7071:8081"
+    restart: always
+    networks:
+      - emdev_net
+    depends_on:
+      - redis
+networks:
+  emdev_net:
+    driver: "bridge"
