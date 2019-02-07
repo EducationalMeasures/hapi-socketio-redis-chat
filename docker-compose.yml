@@ -17,6 +17,7 @@ services:
       - emdev_net
     depends_on:
       - redis
+      - redis_commander
   redis:
     image: redis:5
     ports:
@@ -41,4 +42,3 @@ services:
       - redis
 networks:
   emdev_net:
-    driver: "bridge"
