@@ -11,6 +11,8 @@ services:
       - REDISCLOUD_URL=redis://:foobar@redis:6379
     command: npm run start-docker
     restart: always
+    volumes:
+      - ${PWD}/node_modules:/app/node_modules
     networks:
       - emdev_net
     depends_on:
@@ -19,9 +21,11 @@ services:
     image: redis:5
     ports:
       - "6380:6379"
-    restart: always
+    # Make redis persis the database
+    entrypoint: redis-server --appendonly yes
     volumes:
       - ${PWD}/redis_chat_log:/data
+    restart: always
     networks:
       - emdev_net
   redis_commander:
