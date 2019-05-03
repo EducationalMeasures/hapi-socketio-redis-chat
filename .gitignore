@@ -33,3 +33,6 @@ dump.rdb
 # Elm dependency directory
 elm-stuff
 elm/js/app.js
+
+# Don't commit the chat log
+redis_chat_log

@@ -4,15 +4,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: "node server.js"
     ports:
       - "7070:8080"
     environment:
       - REDIS_URL=redis://:foobar@redis:6379
       - REDISCLOUD_URL=redis://:foobar@redis:6379
-    command: npm run start-docker
     restart: always
-    volumes:
-      - ${PWD}/node_modules:/app/node_modules
     networks:
       - emdev_net
     dns:

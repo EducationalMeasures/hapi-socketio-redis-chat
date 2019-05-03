@@ -1,0 +1,27 @@
+cache:
+  untracked: true
+  paths:
+    - vendor/
+    - node_modules/
+
+stages:
+  - containerize
+
+containerize:
+  stage: "containerize"
+  image: docker:stable-git
+  services:
+    - docker:stable-dind
+  variables:
+    DOCKER_DRIVER: overlay2
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+  script:
+    - docker build -t registry.gitlab.com/educationalmeasures/hapi-socketio-redis-chat -f Dockerfile .
+    - docker build -t registry.gitlab.com/educationalmeasures/hapi-socketio-redis-chat:$CI_COMMIT_REF_NAME-$CI_PROJECT_NAME-$CI_JOB_ID -f Dockerfile .
+    - docker push registry.gitlab.com/educationalmeasures/hapi-socketio-redis-chat:latest
+    - docker push registry.gitlab.com/educationalmeasures/hapi-socketio-redis-chat:$CI_COMMIT_REF_NAME-$CI_PROJECT_NAME-$CI_JOB_ID
+  only:
+    - master
+    - qa
+    - golden
