@@ -17,10 +17,10 @@ containerize:
   before_script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
   script:
-    - docker build -t registry.gitlab.com/educationalmeasures/hapi-socketio-redis-chat -f Dockerfile .
-    - docker build -t registry.gitlab.com/educationalmeasures/hapi-socketio-redis-chat:$CI_COMMIT_REF_NAME-$CI_PROJECT_NAME-$CI_JOB_ID -f Dockerfile .
-    - docker push registry.gitlab.com/educationalmeasures/hapi-socketio-redis-chat:latest
-    - docker push registry.gitlab.com/educationalmeasures/hapi-socketio-redis-chat:$CI_COMMIT_REF_NAME-$CI_PROJECT_NAME-$CI_JOB_ID
+    - docker build -t registry.gitlab.com/educationalmeasures/chat-app -f Dockerfile .
+    - docker build -t registry.gitlab.com/educationalmeasures/chat-app:$CI_COMMIT_REF_NAME-$CI_PROJECT_NAME-$CI_JOB_ID -f Dockerfile .
+    - docker push registry.gitlab.com/educationalmeasures/chat-app:latest
+    - docker push registry.gitlab.com/educationalmeasures/chat-app:$CI_COMMIT_REF_NAME-$CI_PROJECT_NAME-$CI_JOB_ID
   only:
     - master
     - qa
